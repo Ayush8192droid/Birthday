@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Penguin Birthday</title>
+<style>
+    body {
+        margin: 0;
+        background: black;
+        overflow: hidden;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    #penguin-left, #penguin-right {
+        position: absolute;
+        bottom: 0;
+        width: 150px;
+        height: auto;
+    }
+
+    #penguin-left {
+        left: -200px;
+        animation: moveLeft 3s forwards;
+    }
+
+    #penguin-right {
+        right: -200px;
+        animation: moveRight 3s forwards;
+    }
+
+    @keyframes moveLeft {
+        to { left: 35%; }
+    }
+
+    @keyframes moveRight {
+        to { right: 35%; }
+    }
+
+    #message {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 40px;
+        opacity: 0;
+        animation: showMessage 1s forwards 3s;
+    }
+
+    @keyframes showMessage {
+        to { opacity: 1; }
+    }
+
+    .balloon {
+        position: absolute;
+        width: 50px;
+        height: 70px;
+        border-radius: 50%;
+        background: red;
+        animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(100vh); }
+    }
+</style>
+</head>
+<body>
+
+<img id="penguin-left" src="penguin1.png">
+<img id="penguin-right" src="penguin2.png">
+<div id="message">🎂🎈 Happy Birthday 🎉</div>
+
+<script>
+function createBalloon() {
+    let balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * window.innerWidth + "px";
+    balloon.style.background = ["red", "blue", "green", "yellow", "pink"][Math.floor(Math.random() * 5)];
+    balloon.style.animationDuration = (3 + Math.random() * 2) + "s";
+    document.body.appendChild(balloon);
+
+    setTimeout(() => balloon.remove(), 5000);
+}
+
+setInterval(createBalloon, 300);
+</script>
+
+</body>
+</html>
