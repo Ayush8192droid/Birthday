@@ -1,0 +1,244 @@
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #111;
+  overflow: hidden;
+  color: white;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Step general */
+.step {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+.step.active {
+  display: flex;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #ff4081;
+}
+
+/* Button */
+button, .btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+button:hover, .btn:hover {
+  background: #ff3355;
+  transform: scale(1.05);
+}
+
+/* Heart (Step 3) */
+.heart {
+  width: 120px;
+  height: 120px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: heartbeat 1s infinite;
+  margin-bottom: 20px;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+.heart::before { top: -60px; left: 0; }
+.heart::after { left: 60px; top: 0; }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1) rotate(-45deg); }
+  50% { transform: scale(1.2) rotate(-45deg); }
+}
+
+/* Floating Hearts */
+.floating-heart {
+  position: absolute;
+  bottom: 15%;
+  font-size: 45px;
+  opacity: 0.9;
+  animation: floatUp 4s linear forwards;
+  pointer-events: none;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-250px) scale(1.4); opacity: 0; }
+}
+
+/* Message box */
+.message-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Polaroid / memory photos */
+.polaroid {
+  background: #fff;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: inline-block;
+  transform: rotate(-2deg);
+  transition: transform 0.3s;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+.polaroid img {
+  width: 150px;
+  border-radius: 5px;
+}
+.polaroid-caption {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #333;
+  text-align: center;
+}
+
+/* Step6 Heart text */
+.heart-text {
+  font-size: 1.5rem;
+  color: #ff4081;
+  text-shadow: 0 0 10px #ff80ab, 0 0 20px #f06292;
+  animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Petals background */
+#petalsContainer {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.petal {
+  position: absolute;
+  top: -20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Step7 – Pre-Celebration */
+#step7 {
+  display: none;
+  text-align: center;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  color: #fff;
+  padding: 30px;
+}
+#step7 .celebrate-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  animation: glow 1.5s infinite alternate;
+}
+#step7 .celebrate-msg {
+  font-size: 1.3rem;
+  font-style: italic;
+  animation: glow 1.5s infinite alternate-reverse;
+}
+
+/* Step8 – Final Celebration */
+#step8 {
+  display: none;
+  text-align: center;
+  background: linear-gradient(135deg, #fffae3, #ffd6d6);
+  color: #111;
+  padding: 50px 20px;
+  position: relative;
+}
+#step8 .celebrate-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #ff4081, 0 0 25px #f06292;
+  animation: glow 1.5s infinite alternate;
+}
+#step8 .celebrate-msg {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 25px;
+  animation: glow 1.5s infinite alternate-reverse;
+}
+#step8 button {
+  background: #ff4081;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+#step8 button:hover {
+  background: #f06292;
+  transform: scale(1.05);
+}
+
+/* Balloons for Step8 */
+.balloon-step8 {
+  position: absolute;
+  bottom: -100px;
+  font-size: 50px;
+  pointer-events: none;
+}
+
+/* Glow animation reused */
+@keyframes glow {
+  from { text-shadow: 0 0 5px #fff; }
+  to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4081, 0 0 40px #f06292; }
+}
