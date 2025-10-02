@@ -1,0 +1,158 @@
+/* GLOBAL STYLES */
+body {
+    margin: 0;
+    /* गहरा, ग्रेडिएंट बैकग्राउंड */
+    background: radial-gradient(circle at top left, #5d00a7 0%, #000000 70%); 
+    color: white;
+    /* Poppins (साफ़ और बोल्ड) फ़ॉन्ट */
+    font-family: 'Poppins', sans-serif; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    overflow: hidden; 
+
+    /* === फेड इन एनिमेशन === */
+    opacity: 0; 
+    animation: fadeIn 2s forwards; 
+    animation-delay: 0.5s; 
+}
+
+/* FADE IN KEYFRAMES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative; 
+    /* साइज़ छोटा होने पर पोज़िशन को संतुलित करें */
+    transform: translateY(-5%); 
+}
+
+/* GIF/IMAGE (साइज़ छोटा) */
+.main-image {
+    width: 200px; 
+    height: auto;
+    margin-bottom: 25px; 
+    display: block; 
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* TEXT (लेटर्स छोटे और Dancing Script) */
+.main-text {
+    font-size: 2.8rem; 
+    font-weight: 600; 
+    margin: 8px 0;
+}
+
+.sub-text {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.8rem; 
+    margin-bottom: 40px; 
+    font-weight: 600; 
+}
+
+/* BUTTON */
+.main-button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to right, #ff0073, #ff4d00); 
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 0, 115, 0.7); 
+    transition: transform 0.2s, opacity 0.5s ease-in-out;
+}
+
+/* ट्रांज़िशन क्लास */
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+/* LYRICS ANIMATION KEYFRAMES */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+/* LYRICS SECTION (कंटेनर को सेंटर में रखता है) */
+.lyrics-section {
+    position: fixed; 
+    top: 40%; 
+    left: 0%; 
+    transform: translate(-50%, -50%); 
+    width: 100%; 
+    max-width: 600px; 
+    text-align: center;
+    position: relative; 
+    height: 100px; 
+}
+
+/* absolute-line क्लास (परफेक्ट सेंटरिंग) */
+.absolute-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 100%; 
+    opacity: 0; 
+}
+
+/* LYRIC LINE (साइज़ और फ़ॉन्ट) */
+.lyric-line {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.8rem; 
+    margin: 0; 
+    font-weight: 600; 
+}
+
+/* FINAL MESSAGE STYLING (JS के Final Overlay के अंदर) */
+.final-message {
+    /* position: fixed/absolute/transform हटा दिए गए हैं क्योंकि इसे JS का flex कंटेनर मैनेज करेगा */
+    position: relative;
+    transform: none; 
+    margin-top: 20px; /* GIF और मैसेज के बीच की जगह */
+    
+    font-family: 'Dancing Script', cursive; /* कराओके फ़ॉन्ट */
+    font-size: 3.2rem; /* लिरिक्स से थोड़ा बड़ा */
+    font-weight: 600;
+    color: white;
+    
+    /* === चौड़ाई कम करने और केंद्र में रखने के लिए बदलाव किए गए हैं === */
+    max-width: 90%; /* मैसेज की अधिकतम चौड़ाई को 80% तक सीमित करें */
+    margin-left: auto; /* फ्लेक्स कंटेनर में सेंटरिंग के लिए */
+    margin-right: auto; /* फ्लेक्स कंटेनर में सेंटरिंग के लिए */
+    /* ============================================================= */
+    
+    /* opacity JS से मैनेज होगी */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; 
+    z-index: 11;
+}
+
+.watermark {
+    position: absolute;
+    bottom: -50vh; 
+    right: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
